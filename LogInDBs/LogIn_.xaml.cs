@@ -28,13 +28,13 @@ namespace LogInDBs
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=DataLog; Integrated Security=True");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SignUpDB; Integrated Security=True");
 
             try
             {
                 if(sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
-                string query = "SELECT COUNT(1) FROM UserData Where Username=@Username and Password=@Password";
+                string query = "SELECT COUNT(1) FROM SignUpTable_ Where Username=@Username and Password=@Password";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.Parameters.AddWithValue("@Username", txtUsername.Text);
@@ -44,6 +44,7 @@ namespace LogInDBs
                 if(count == 1)
                 {
                     MainWindow dashboard = new MainWindow();
+                    dashboard.label.Content = $"Welcome back, { txtUsername.Text}";
                     dashboard.Show();
                     this.Close();
                 }

@@ -29,14 +29,17 @@ namespace LogInDBs
         {
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SignUpDB; Integrated Security=True");
 
-            try
+            try 
+            { 
 
-            {
-              sqlCon.Open();  // I am opening the connection to the db 
+                
+                //opening the connection to the db 
+
+                sqlCon.Open();  
 
                 //Build our actual query 
 
-                string query = "INSERT INTO SignUpTable(FirstName,LastName,Email,Username,Password)values ('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtEmail.Text + "','" + this.txtUsername.Text + "','" + this.PasswordBox.Password + "') ";
+                string query = "INSERT INTO SignUpTable_(FirstName,LastName,Email,Username,Password)values ('" + this.txtFirstName.Text + "','" + this.txtLastName.Text + "','" + this.txtEmail.Text + "','" + this.txtUsername.Text + "','" + this.PasswordBox.Password + "') ";
 
                 //Establish a sql command
 
@@ -45,6 +48,10 @@ namespace LogInDBs
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Successfully saved");
+
+                LogIn_ lg = new LogIn_();
+                lg.Show();
+                this.Close();
 
             }
 
