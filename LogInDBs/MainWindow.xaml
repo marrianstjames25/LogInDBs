@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="300" Width="300" FontSize="14" >
     <Grid>
-
-        <Label x:Name="label" Content="Welcome to your home page:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!-- Personal label generator -->
+        <Label x:Name="label" FontSize="25"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,110,0,0" Height="49" Width="277"/>
 
     </Grid>
 </Window>

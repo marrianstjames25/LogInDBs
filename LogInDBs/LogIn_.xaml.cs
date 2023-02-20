@@ -32,6 +32,10 @@ namespace LogInDBs
 
             try
             {
+               
+
+
+
                 if(sqlCon.State == ConnectionState.Closed)
                 sqlCon.Open();
                 string query = "SELECT COUNT(1) FROM SignUpTable_ Where Username=@Username and Password=@Password";
@@ -44,7 +48,7 @@ namespace LogInDBs
                 if(count == 1)
                 {
                     MainWindow dashboard = new MainWindow();
-                    dashboard.label.Content = $"Welcome back, { txtUsername.Text}";
+                    dashboard.label.Content = $"Welcome,   {txtUsername.Text} ";
                     dashboard.Show();
                     this.Close();
                 }
