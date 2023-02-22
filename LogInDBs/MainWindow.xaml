@@ -1,14 +1,19 @@
-﻿<Window x:Class="LogInDBs.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LogInDBs"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts" x:Class="LogInDBs.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="300" FontSize="14" >
+        Title="MainWindow" Height="450" Width="600" FontSize="14" >
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://t3.ftcdn.net/jpg/03/70/03/90/360_F_370039032_pFYzDbkvpT4ssQ1Y2f7h2DfmDlJFtJsY.jpg"/>
+        </Grid.Background>
         <!-- Personal label generator -->
-        <Label x:Name="label" FontSize="25"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,110,0,0" Height="49" Width="277"/>
+        <Label x:Name="label" FontSize="25"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,17,0,0" Height="49" Width="277" Foreground="White"  FontFamily="Arial Black"/>
+
 
     </Grid>
 </Window>
