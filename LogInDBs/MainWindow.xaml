@@ -13,6 +13,8 @@
         </Grid.Background>
         <!-- Personal label generator -->
         <Label x:Name="label" FontSize="25"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,17,0,0" Height="49" Width="277" Foreground="White"  FontFamily="Arial Black"/>
+        
+        <!-- changes -->
 
 
     </Grid>
