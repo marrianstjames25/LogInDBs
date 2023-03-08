@@ -1,0 +1,51 @@
+﻿<Window x:Class="LogInDBs.DataSets"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LogInDBs"
+        mc:Ignorable="d"
+        Title="DataSets" Height="450" Width="800" FrameworkElement.Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:SignUpDBDataSet x:Key="signUpDBDataSet"/>
+        <CollectionViewSource x:Key="signupTable_ViewSource" Source="{Binding SignupTable_, Source={StaticResource signUpDBDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource signupTable_ViewSource}">
+        <DataGrid x:Name="signupTable_DataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="147,70,181,160">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="iDColumn" Header="ID" IsReadOnly="True" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox>
+                                <ComboBoxItem Content="{Binding ID}"/>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="firstNameColumn" Binding="{Binding FirstName}" Header="First Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="lastNameColumn" Binding="{Binding LastName}" Header="Last Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="usernameColumn" Binding="{Binding Username}" Header="Username" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding Password}" Header="Password" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="emailColumn" Binding="{Binding Email}" Header="Email" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Margin="270,325,0,0" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Content="First Name:" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <ComboBox x:Name="firstNameComboBox" Grid.Column="1" DisplayMemberPath="FirstName" HorizontalAlignment="Left" Height="NaN" ItemsSource="{Binding}" Margin="3" Grid.Row="0" VerticalAlignment="Center" Width="120">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+        </Grid>
+
+    </Grid>
+</Window>

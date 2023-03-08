@@ -82,6 +82,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataSets.xaml.cs">
+      <DependentUpon>DataSets.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataSet__.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,6 +119,10 @@
     <Compile Include="SignupTable_.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="DataSets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Load.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
