@@ -54,6 +54,22 @@ namespace LogInDBs
                     MessageBox.Show(ex.Message);
                 }
             }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            LogInDBs.DataSet__ dataSet__ = ((LogInDBs.DataSet__)(this.FindResource("dataSet__")));
+            // Load data into the table BookDetails. You can modify this code as needed.
+            LogInDBs.DataSet__TableAdapters.BookDetailsTableAdapter dataSet__BookDetailsTableAdapter = new LogInDBs.DataSet__TableAdapters.BookDetailsTableAdapter();
+            dataSet__BookDetailsTableAdapter.Fill(dataSet__.BookDetails);
+            System.Windows.Data.CollectionViewSource bookDetailsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("bookDetailsViewSource")));
+            bookDetailsViewSource.View.MoveCurrentToFirst();
+            // Load data into the table section125. You can modify this code as needed.
+            LogInDBs.DataSet__TableAdapters.section125TableAdapter dataSet__section125TableAdapter = new LogInDBs.DataSet__TableAdapters.section125TableAdapter();
+            dataSet__section125TableAdapter.Fill(dataSet__.section125);
+            System.Windows.Data.CollectionViewSource section125ViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("section125ViewSource")));
+            section125ViewSource.View.MoveCurrentToFirst();
         }
+    }
     }
 

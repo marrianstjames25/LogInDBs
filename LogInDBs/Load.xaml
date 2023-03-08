@@ -6,10 +6,50 @@
         xmlns:local="clr-namespace:LogInDBs"
         mc:Ignorable="d"
         Title="Load" Height="450" Width="600
-        ">
-    <Grid>
-        <Button Content="Load" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Height="35" Width="88" Click="Button_Click"/>
-        <DataGrid x:Name="DataGrid_" Margin="98,91,98,132"/>
+        " Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:DataSet__ x:Key="dataSet__"/>
+        <CollectionViewSource x:Key="bookDetailsViewSource" Source="{Binding BookDetails, Source={StaticResource dataSet__}}"/>
+        <CollectionViewSource x:Key="section125ViewSource" Source="{Binding section125, Source={StaticResource dataSet__}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource bookDetailsViewSource}">
+        <Button Content="Load" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Height="35" Width="88" Click="Button_Click"/>
+        <DataGrid x:Name="DataGrid_" Margin="10,6,186,217"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource bookDetailsViewSource}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,33,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <DataGrid x:Name="bookDetailsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="180,222,20,10" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="iSBNColumn" Header="ISBN" IsReadOnly="True" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox>
+                                <ComboBoxItem Content="{Binding ISBN}"/>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="book_TitleColumn" Binding="{Binding Book_Title}" Header="Book Title" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="publication_yearColumn" Header="Publication year" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Publication_year, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="languageColumn" Binding="{Binding Language}" Header="Language" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="category_TypeColumn" Binding="{Binding Category_Type}" Header="Category Type" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="binding_IdColumn" Binding="{Binding Binding_Id}" Header="Binding Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="no_Of_Copies_ActualColumn" Binding="{Binding No_Of_Copies_Actual}" Header="No Of Copies Actual" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="no_Of_Copies_CurrentColumn" Binding="{Binding No_Of_Copies_Current}" Header="No Of Copies Current" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
